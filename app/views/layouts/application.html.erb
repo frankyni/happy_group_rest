@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Happy Group</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+
+
+	<body>
+		<header>
+
+		    <p class="notice"><%= notice %></p>
+		    <p class="alert"><%= alert %></p>
+
+		    <nav>
+		    	<ul>
+			    	<% if user_signed_in? && admin? %>
+			    		<li><%= link_to 'Admin Dashboard', dashboard_path %></li>
+				    	<li><%= current_user.email %></li>
+				    	<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+			    	<% elsif user_signed_in? %>
+			    		<li><%= current_user.email %></li>
+				    	<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+			    	<% else %>
+			    		<li id="login">
+				    		<div id="login-trigger">Sign In<span>▼</span></div>
+				    		<div id="login-content"><%= render 'devise/sessions/new' %></div>
+			    		</li>
+			    		<li id="signup">
+				    		<div id="signup-trigger">Sign Up<span>▼</span></div>
+				    		<div id="signup-content"><%= render 'devise/registrations/new' %></div>
+			    		</li>
+			    	<% end %>
+		    	</ul>
+		    </nav>
+	    </header>
+
+		<%= yield %>
+
+	</body>
+</html>

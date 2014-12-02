@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant_id: 
+  sm_price: MyString
+  lg_price: MyString
+  desc: MyString
+  category: 
+  combo: false
+  lunch: false
+
+two:
+  restaurant_id: 
+  sm_price: MyString
+  lg_price: MyString
+  desc: MyString
+  category: 
+  combo: false
+  lunch: false

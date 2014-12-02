@@ -8,7 +8,6 @@ class ChangeItemsItem < ActiveRecord::Migration
   	rename_column(:hours, :restaurants_id, :restaurant_id)
   	rename_column(:housespecials, :items_id, :item_id)
   	rename_column(:ingredients, :items_id, :item_id)
-  	rename_column(:items, :restaurants_id, :restaurant_id)
   	rename_column(:orderitems, :items_id, :item_id)
   	rename_column(:orderitems, :orders_id, :order_id)
   	rename_column(:orders, :users_id, :user_id)

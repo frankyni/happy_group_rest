@@ -1,6 +1,5 @@
 class RemoveAndAddName < ActiveRecord::Migration
   def change
-  	remove_column(:items, :name)
   	add_column(:appitizers, :name, :string)
   	add_column(:soups, :name, :string)
   	add_column(:chefs, :name, :string)

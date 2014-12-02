@@ -1,6 +1,5 @@
 class RemovingDatabases < ActiveRecord::Migration
   def change
-  	drop_table(:items)
   	drop_table(:appitizers)
   	drop_table(:beefs)
   	drop_table(:chefs)

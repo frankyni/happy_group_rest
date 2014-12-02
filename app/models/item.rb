@@ -3,15 +3,15 @@ class Item < ActiveRecord::Base
 	has_many :order_items
 	has_many :orders, through: :order_items
 	has_many :ingredients
-	has_many :appitizers
-	has_many :soups
-	has_many :porks
-	has_many :chickens
-	has_many :beefs
-	has_many :shrimps
-	has_many :veggies
-	has_many :chefs
-	has_many :specialcombos
-	has_many :specials
-	has_many :extras
+	has_one :appitizer
+	has_one :soup
+	has_one :pork
+	has_one :chicken
+	has_one :beef
+	has_one :shrimp
+	has_one :veggie
+	has_one :chef
+	has_one :specialcombo
+	has_one :special
+	has_one :extra
 end

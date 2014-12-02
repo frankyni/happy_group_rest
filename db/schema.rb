@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202072354) do
+ActiveRecord::Schema.define(version: 20141202081154) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -52,33 +52,35 @@ ActiveRecord::Schema.define(version: 20141202072354) do
 
   create_table "items", force: true do |t|
     t.integer  "restaurant_id"
-    t.string   "sm_price",                      null: false
-    t.string   "lg_price"
-    t.string   "desc",                          null: false
+    t.decimal  "sm_price",      precision: 8, scale: 2,                 null: false
+    t.decimal  "lg_price",      precision: 8, scale: 2
+    t.string   "desc",                                                  null: false
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "lunch",                         null: false
-    t.string   "combo",                         null: false
-    t.boolean  "spice",         default: false
+    t.decimal  "lunch",         precision: 8, scale: 2,                 null: false
+    t.decimal  "combo",         precision: 8, scale: 2,                 null: false
+    t.boolean  "spice",                                 default: false
   end
 
   add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
 
-  create_table "orderitems", force: true do |t|
-    t.integer "item_id"
-    t.integer "order_id"
-    t.string  "qty"
-    t.string  "instuctions"
+  create_table "ordered_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "item_id"
+    t.integer  "qty"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "orderitems", ["item_id"], name: "index_orderitems_on_item_id"
-  add_index "orderitems", ["order_id"], name: "index_orderitems_on_order_id"
+  add_index "ordered_items", ["item_id"], name: "index_ordered_items_on_item_id"
+  add_index "ordered_items", ["order_id"], name: "index_ordered_items_on_order_id"
 
   create_table "orders", force: true do |t|
     t.integer "user_id"
-    t.string  "subtotal"
-    t.string  "total"
+    t.decimal "subtotal", precision: 8, scale: 2
+    t.decimal "total",    precision: 8, scale: 2
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

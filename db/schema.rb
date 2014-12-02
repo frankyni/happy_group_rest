@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202023919) do
+ActiveRecord::Schema.define(version: 20141202041539) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -31,56 +31,6 @@ ActiveRecord::Schema.define(version: 20141202023919) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
-  create_table "appitizers", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "appitizers", ["item_id"], name: "index_appitizers_on_item_id"
-
-  create_table "beefs", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "beefs", ["item_id"], name: "index_beefs_on_item_id"
-
-  create_table "chefs", force: true do |t|
-    t.integer "item_id"
-    t.string  "price"
-    t.string  "name"
-  end
-
-  add_index "chefs", ["item_id"], name: "index_chefs_on_item_id"
-
-  create_table "chickens", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "chickens", ["item_id"], name: "index_chickens_on_item_id"
-
-  create_table "combos", force: true do |t|
-    t.string  "combo_price"
-    t.integer "comboable_id"
-    t.string  "comboable_type"
-  end
-
-  create_table "extras", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "extras", ["item_id"], name: "index_extras_on_item_id"
-
   create_table "hours", force: true do |t|
     t.integer "restaurant_id"
     t.string  "sunday"
@@ -93,39 +43,6 @@ ActiveRecord::Schema.define(version: 20141202023919) do
   end
 
   add_index "hours", ["restaurant_id"], name: "index_hours_on_restaurant_id"
-
-  create_table "housespecials", force: true do |t|
-    t.integer "item_id"
-    t.string  "name"
-    t.string  "sm_price"
-    t.string  "lg_price"
-  end
-
-  add_index "housespecials", ["item_id"], name: "index_housespecials_on_item_id"
-
-  create_table "ingredients", force: true do |t|
-    t.string  "name"
-    t.integer "item_id"
-    t.string  "price"
-  end
-
-  add_index "ingredients", ["item_id"], name: "index_ingredients_on_item_id"
-
-  create_table "items", force: true do |t|
-    t.integer "restaurant_id"
-    t.string  "desc"
-    t.text    "type"
-    t.boolean "lunch",         default: false
-    t.boolean "combo",         default: false
-  end
-
-  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
-
-  create_table "lunches", force: true do |t|
-    t.string  "ln_price"
-    t.integer "lunchable_id"
-    t.string  "lunchable_type"
-  end
 
   create_table "orderitems", force: true do |t|
     t.integer "item_id"
@@ -145,15 +62,6 @@ ActiveRecord::Schema.define(version: 20141202023919) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
-  create_table "porks", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "porks", ["item_id"], name: "index_porks_on_item_id"
-
   create_table "profiles", force: true do |t|
     t.integer "user_id"
     t.string  "address"
@@ -172,38 +80,6 @@ ActiveRecord::Schema.define(version: 20141202023919) do
 
   add_index "restaurants", ["admin_id"], name: "index_restaurants_on_admin_id"
 
-  create_table "shrimps", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "shrimps", ["item_id"], name: "index_shrimps_on_item_id"
-
-  create_table "soups", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "soups", ["item_id"], name: "index_soups_on_item_id"
-
-  create_table "specialcombos", force: true do |t|
-    t.integer "item_id"
-    t.string  "plain"
-    t.string  "ff"
-    t.string  "plainfr"
-    t.string  "veg"
-    t.string  "pork_chicken"
-    t.string  "shrimp_beef"
-    t.string  "wr"
-    t.string  "name"
-  end
-
-  add_index "specialcombos", ["item_id"], name: "index_specialcombos_on_item_id"
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -221,14 +97,5 @@ ActiveRecord::Schema.define(version: 20141202023919) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "veggies", force: true do |t|
-    t.integer "item_id"
-    t.string  "sm_price"
-    t.string  "lg_price"
-    t.string  "name"
-  end
-
-  add_index "veggies", ["item_id"], name: "index_veggies_on_item_id"
 
 end
